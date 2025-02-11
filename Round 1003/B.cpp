@@ -9,17 +9,37 @@ using namespace std;
 #define ss second
 const int mod = 1e9+7;
 const int N = 200005;
-void solve() {
-    string s;
-    cin >> s;
-    int n=s.size();
-    for(int i=0;i<n-1;i++){
-        if(s[i]==s[i+1]){
-            cout<<1<<" "<<endl;
-            return;
-        }
+
+void solve()
+{
+    int n;
+    cin >> n;
+    vector<int> v(1003, 0);
+    int x;
+
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> x;
+        v[x]++;
     }
-    cout<<s.size()<<endl;
+
+//    for(int i=1;i<=10;i++) cout<<v[i]<<" ";
+//    cout<<endl;
+    for(int i=1;i<=1000;i++){
+        if(v[i]%2){
+            if(v[i]==1){
+                no;
+                return;
+            }
+            v[i+1]+=v[i]-2;
+        }
+        else v[i+1]+=max(v[i]-2, 0ll);
+
+    }
+//    for(int i=1;i<=10;i++) cout<<v[i]<<" ";
+//    cout<<endl;
+    yes;
 }
 
 signed main()

@@ -1,29 +1,40 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define yes cout << "Yes" << endl
 #define no cout << "No" << endl
-#define neg cout << -1 << endl
-#define pb push_back
-#define ff first
-#define ss second
-const int mod = 1e9+7;
-const int N = 200005;
-void solve() {
-    string W;
-    cin >> W;
-    cout << W.substr(0, W.size() - 2) + "i" << endl;
+
+int digitRoot(int n) {
+    while (n >= 10) {
+        int sum = 0;
+        while (n) {
+            sum += n % 10;
+            n /= 10;
+        }
+        n = sum;
+    }
+    return n;
 }
 
-signed main()
-{
+void solve() {
+    int x, y;
+    cin >> x >> y;
+    if(y>x and (y-x)!=1){
+        no;
+        return;
+    }
+    int xx=digitRoot(x), yy=digitRoot(y);
+    //cout<<xx<<" "<<yy<<endl;
+
+    if(xx-yy==8 or yy==xx+1) yes;
+    else no;
+}
+
+signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-    cout.tie(0);
-
-    int t = 1;
+    int t;
     cin >> t;
     while (t--) solve();
-
     return 0;
 }
